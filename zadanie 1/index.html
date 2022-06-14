@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pyszny napój</title>
+</head>
+<body>
+    <div id="welcomeMsg">
+    <h1>Hola Hola Koleżko, wymagana jest weryfikacja wieku zanim zobaczysz treść niniejszej stronki</h1>
+    <button id="btnAge"> WERYFIKUJ !</button>
+    </div>
+
+    <script>
+            const welcome = document.getElementById("welcomeMsg")
+            const btn = document.getElementById("btnAge");
+            btn.addEventListener("click", verify) 
+        
+        function verify(){  
+            
+            let ageCheck = window.prompt("Wprowadź swój wiek!");            
+            if (parseInt(ageCheck) >= 18){
+                alert("DOOOBRZE");
+
+                document.body.style.background = "coral";
+                
+                let beer = document.createElement("img")
+                beer.setAttribute("id","beerImg")
+                document.body.appendChild(beer)
+                
+                document.getElementById("beerImg").src = 'https://polanddaily24.com/imgcache/750x430/c/uploads/cropit/1650028008c6e7708bc4b8f61ac485dd4e03729334.jpg'                
+                document.body.removeChild(welcome)
+            } else{
+                alert("gówniarzu.zasrany")
+            }          
+            
+        }
+    </script>
+</body>
+</html>
