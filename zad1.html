@@ -15,26 +15,30 @@
     <script>
             const welcome = document.getElementById("welcomeMsg")
             const btn = document.getElementById("btnAge");
-            btn.addEventListener("click", verify) 
+            btn.addEventListener("click", verify); 
+        
         
         function verify(){  
             
-            let ageCheck = window.prompt("Wprowadź swój wiek!");            
+            const ageCheck = window.prompt("Wprowadź swój wiek!");            
             if (parseInt(ageCheck) >= 18){
                 alert("DOOOBRZE");
-
-                document.body.style.background = "coral";
-                
-                let beer = document.createElement("img")
-                beer.setAttribute("id","beerImg")
-                document.body.appendChild(beer)
-                
-                document.getElementById("beerImg").src = 'https://polanddaily24.com/imgcache/750x430/c/uploads/cropit/1650028008c6e7708bc4b8f61ac485dd4e03729334.jpg'                
-                document.body.removeChild(welcome)
+                deliciousDrink();                
             } else{
                 alert("gówniarzu.zasrany")
             }          
             
+        }
+        function deliciousDrink(){
+            document.body.style.background = "coral";
+                
+            let beer = document.createElement("img")
+            beer.setAttribute("id","beerImg")           
+            beer.src = 'https://polanddaily24.com/imgcache/750x430/c/uploads/cropit/1650028008c6e7708bc4b8f61ac485dd4e03729334.jpg'
+            document.body.appendChild(beer) 
+            
+                          
+            document.body.removeChild(welcome)
         }
     </script>
 </body>
