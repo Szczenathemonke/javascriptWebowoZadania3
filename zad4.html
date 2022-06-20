@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="styleZad4.css" rel="stylesheet">
+</head>
+<body>
+    <div class="layout">
+    <div class="container" >
+        <button id="btnIncrease"> + </button>
+        <img  id="Szczena" src="https://djabolo.niezniszczalny-chinczyk.com/assets/gowno/smiechostki.png">
+        <button id="btnDecrease"> - </button>
+        </div>
+        <div class="container">
+        <button id="ssijPale">SSIJ PAŁE</button>
+        </div>
+    </div>
+
+    <script>
+        const inc = document.getElementById("btnIncrease");
+        const dec = document.getElementById("btnDecrease");
+        const img1 = document.getElementById("Szczena");
+        const suck = document.getElementById("ssijPale");
+        
+        const counterRotateStep = 10;
+        let drive
+        // let driveCount
+        let counter = 0; 
+        dec.disabled = true; 
+
+        function updateButtonState(counter){
+            const inc = document.getElementById("btnIncrease");
+            const dec = document.getElementById("btnDecrease");
+
+            inc.disabled = counter > 34;
+            dec.disabled = counter < 1;
+        }
+        function updateImageRotation(counter){
+            const img1 = document.getElementById("Szczena");
+            
+            img1.style.transform = `rotate(${counter * counterRotateStep}deg)`;
+            
+        }
+        
+        function increase(){
+                                                     
+            counter += 1            
+            updateImageRotation(counter);
+            updateButtonState(counter);
+                 
+        };
+        function decrease(){
+
+            counter -= 1
+            updateImageRotation(counter);
+            updateButtonState(counter);                 
+                  
+        };
+        function driveRotate(){
+
+            counter += 1;
+            updateImageRotation(counter);
+
+        }
+        function startDrive(){ 
+            inc.disabled = true
+            dec.disabled = true            
+            drive = setInterval(driveRotate, 10^-3)
+            
+                       
+        }
+        function stopDrive(){
+            clearInterval(drive)            
+            counter = counter % 36
+            img1.style.transform = `rotate(${counter * counterRotateStep}deg)`
+            updateButtonState(counter)
+            
+        }    
+        function driveToWhiteslope(){
+            const suck = document.getElementById("ssijPale");
+            
+
+            if(suck.textContent === "SSIJ PAŁE"){
+            suck.textContent = "JADE DO BIAŁEGOSTOKU"
+            startDrive()
+            }else{
+            suck.textContent = "SSIJ PAŁE"
+            stopDrive()
+            }
+
+        }       
+
+        inc.addEventListener("click", increase);
+        dec.addEventListener("click", decrease);
+        suck.addEventListener("click", driveToWhiteslope);
+
+    </script>
+</body>
+</html>
