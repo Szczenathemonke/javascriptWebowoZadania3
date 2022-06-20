@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zadanie6</title>
+    <link href="zad5.css" rel="stylesheet">
+</head>
+<body>
+    <div class="squareholder">
+        <div><p class="biggieCount"></p></div>
+        <div><p></p></div>
+        <div><p></p></div>
+        <div><p></p></div>
+    </div>
+    <div class="squareHolder">
+        <div class="square" id="biggie"></div>
+        <div class="square" id="blackie"></div>
+        <div class="square" id="downie"></div>
+        <div class="square" id="bayBlade"></div>
+    </div>
+    <script>
+        const biggie = document.getElementById("biggie");
+        const blackie = document.getElementById("blackie");
+        const downie = document.getElementById("downie");
+        const bayBlade = document.getElementById("bayBlade");
+        let animationCount
+        
+        function biggieCount(){
+            let count = 0
+            const biggieCount = document.querySelector('biggieCount')
+
+
+
+
+        }
+
+        biggie.addEventListener("mouseenter", ()=> biggie.classList.add("goBig"))
+        biggie.addEventListener("mouseleave", ()=> {
+            biggie.addEventListener("animationend", biggieCount)
+            biggie.classList.remove("goBig")
+
+        
+        })
+
+        blackie.addEventListener("mouseenter", ()=> blackie.classList.add("goBlack"))
+        blackie.addEventListener("mouseleave", ()=> blackie.classList.remove("goBlack"))
+
+        downie.addEventListener("mousemove", ()=> downie.classList.add("goDown"))
+        downie.addEventListener("mouseleave", ()=> downie.classList.remove("goDown"))
+
+        bayBlade.addEventListener("mouseenter", ()=> bayBlade.classList.add("goSpin"))
+        bayBlade.addEventListener("mouseleave", ()=> bayBlade.classList.remove("goSpin"))
+    </script>    
+</body>
+</html>
