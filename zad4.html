@@ -24,8 +24,10 @@
         const dec = document.getElementById("btnDecrease");
         const img1 = document.getElementById("Szczena");
         const suck = document.getElementById("ssijPale");
-        let drive
+        
         const counterRotateStep = 10;
+        let drive
+        // let driveCount
         let counter = 0; 
         dec.disabled = true; 
 
@@ -40,7 +42,7 @@
             const img1 = document.getElementById("Szczena");
             
             img1.style.transform = `rotate(${counter * counterRotateStep}deg)`;
-            img1.style.transition ="transform 0.5s";
+            
         }
         
         function increase(){
@@ -57,14 +59,21 @@
             updateButtonState(counter);                 
                   
         };
+        function driveRotate(){
+
+            counter += 1;
+            updateImageRotation(counter);
+
+        }
         function startDrive(){ 
             inc.disabled = true
-            dec.disabled = true
-            drive = setInterval(increase, 10^-3) 
+            dec.disabled = true            
+            drive = setInterval(driveRotate, 10^-3)
+            
                        
         }
         function stopDrive(){
-            clearInterval(drive)
+            clearInterval(drive)            
             counter = counter % 36
             img1.style.transform = `rotate(${counter * counterRotateStep}deg)`
             updateButtonState(counter)
