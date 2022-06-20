@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styleZad2.css">
+</head>
+<body>
+    <div class="container" >
+    <button id="btnIncrease"> + </button>
+    <img class="null" id="Szczena" src="https://djabolo.niezniszczalny-chinczyk.com/assets/gowno/smiechostki.png">
+    <button id="btnDecrease"> - </button>
+    </div>
+
+    <script>
+        const inc = document.getElementById("btnIncrease");
+        const dec = document.getElementById("btnDecrease");
+        const img1 = document.getElementById("Szczena");
+        let classList = [null, "rotate90", "rotate180", "rotate270"];
+        let counter = 0;        
+        dec.disabled = true; 
+        function updateButtonState(counter){
+            const inc = document.getElementById("btnIncrease");
+            const dec = document.getElementById("btnDecrease");
+
+            inc.disabled = counter > 2;
+            dec.disabled = counter < 1;
+        }
+        function updateImageRotation(counter){
+            const img1 = document.getElementById("Szczena");
+            
+            img1.className = classList[counter];
+            img1.style.transition ="transform 1s";
+        }
+        function increase(){        
+            
+            counter += 1;                   
+            updateImageRotation(counter);            
+            updateButtonState(counter);
+        };
+        function decrease(){
+            
+            counter -= 1;
+            updateImageRotation(counter);  
+            updateButtonState(counter);     
+        };     
+        
+
+        inc.addEventListener("click", increase);
+        dec.addEventListener("click", decrease);
+        
+
+    </script>
+</body>
+</html>
