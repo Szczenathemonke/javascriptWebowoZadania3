@@ -26,7 +26,8 @@ body{
       
 }
 .goBlack{
-    background-color: black; 
+    background-color: black;
+    transition: background-color 1s; 
 }
 .goDown{
     transform: translate(0, 100px)
