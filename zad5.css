@@ -1,0 +1,36 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+
+    width:100vw;
+    height:100vh;
+    margin: 0px;
+}
+.squareHolder{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+.square{
+    width: 100px;
+    height: 100px;
+    background-color: rgb(41, 124, 85);
+    transition: transform 1s;  
+    
+}
+.goBig{
+    transform: scale(2);
+      
+}
+.goBlack{
+    background-color: black; 
+}
+.goDown{
+    transform: translate(0, 100px)
+}
+.goSpin{
+    transform: rotate(45deg);
+}
