@@ -51,17 +51,21 @@ body{
 }
 .goBig{
     animation-name: biggie;
-    animation-duration: 1s;        
+    animation-duration: 1s;
+    animation-fill-mode: both;      
 }
 .goBlack{
     animation-name: blackie;
     animation-duration: 1s;
+    animation-fill-mode: both; 
 }
 .goDown{
     animation-name: downie;
     animation-duration: 1s;
+    animation-fill-mode: both; 
 }
 .goSpin{
     animation-name: bayBlade;
     animation-duration: 1s;
+    animation-fill-mode: both; 
 }
