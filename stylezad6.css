@@ -1,7 +1,27 @@
+@keyframes biggie{
+    from {transform: scale(1)}
+    to {transform: scale(2)}
+}
+@keyframes blackie{
+    from {background-color: rgb(41, 124, 85);}
+    to {background-color: black;}
+}
+@keyframes downie{
+    from {transform: translate(0, 0)}
+    to {transform: translate(0, 100px)}
+}
+@keyframes bayBlade{
+    from {transform: rotate(0deg)}
+    to {transform: rotate(45deg)}
+
+}
+
 body{
     display: flex;
     align-items: center;
-    justify-content: center;   
+    justify-content: center;
+    flex-direction: column;   
+    gap: 70px;
 
     width:100vw;
     height:100vh;
@@ -14,24 +34,34 @@ body{
     align-items: center;
     gap: 50px;
 }
+.counter{
+    border: solid gray 1px;
+    width: 98px;
+    height: 30px;
+    
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
 .square{
     width: 100px;
     height: 100px;
-    background-color: rgb(41, 124, 85);
-    transition: transform 1s;  
+    background-color: rgb(41, 124, 85);     
     
 }
 .goBig{
-    transform: scale(2);
-      
+    animation-name: biggie;
+    animation-duration: 1s;        
 }
 .goBlack{
-    background-color: black;
-    transition: background-color 1s; 
+    animation-name: blackie;
+    animation-duration: 1s;
 }
 .goDown{
-    transform: translate(0, 100px)
+    animation-name: downie;
+    animation-duration: 1s;
 }
 .goSpin{
-    transform: rotate(45deg);
+    animation-name: bayBlade;
+    animation-duration: 1s;
 }
