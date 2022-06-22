@@ -1,0 +1,70 @@
+@keyframes biggie{
+    from {transform: scale(1)}
+    to {transform: scale(2)}
+}
+@keyframes blackie{
+    from {filter: grayscale(0%)}
+    to {filter: grayscale(100%)}
+}
+@keyframes downie{
+    from {transform: translate(0, 0)}
+    to {transform: translate(0, 100px)}
+}
+@keyframes bayBlade{
+    from {transform: rotate(0deg)}
+    to {transform: rotate(45deg)}
+
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;   
+    gap: 70px;
+
+    width:100vw;
+    height:100vh;
+    margin: 0px;
+}
+.squareHolder{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+.counter{
+    border: solid gray 1px;
+    width: 98px;
+    height: 30px;
+    
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.square{
+    width: 100px;
+    height: 100px;       
+    
+}
+.goBig{
+    animation-name: biggie;
+    animation-duration: 1s;
+    animation-fill-mode: both;      
+}
+.goBlack{
+    animation-name: blackie;
+    animation-duration: 1s;
+    animation-fill-mode: both; 
+}
+.goDown{
+    animation-name: downie;
+    animation-duration: 1s;
+    animation-fill-mode: both; 
+}
+.goSpin{
+    animation-name: bayBlade;
+    animation-duration: 1s;
+    animation-fill-mode: both; 
+}
