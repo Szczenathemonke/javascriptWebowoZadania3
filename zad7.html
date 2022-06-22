@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zadanie6</title>
+    <link href="stylezad7.css" rel="stylesheet">
+</head>
+<body>
+    <div class="squareHolder">
+        <div class="counter" ><p id="biggieCount" ></p></div>
+        <div class="counter"><p id="blackieCount"></p></div>
+        <div class="counter"><p id="downieCount"></p></div>
+        <div class="counter"><p id="bayBladeCount"></p></div>
+    </div>
+    <div class="squareHolder">
+        <img src="https://djabolo.niezniszczalny-chinczyk.com/assets/gowno/smiechostki.png" class="square" id="biggie">
+        <img src="https://djabolo.niezniszczalny-chinczyk.com/assets/gowno/smiechostki.png" class="square" id="blackie">
+        <img src="https://djabolo.niezniszczalny-chinczyk.com/assets/gowno/smiechostki.png" class="square" id="downie">
+        <img src="https://djabolo.niezniszczalny-chinczyk.com/assets/gowno/smiechostki.png" class="square" id="bayBlade">
+    </div>
+    <script>
+        const biggie = document.getElementById("biggie");
+        const blackie = document.getElementById("blackie");
+        const downie = document.getElementById("downie");
+        const bayBlade = document.getElementById("bayBlade");
+        let animationCount
+        let biggieAnimationCount = 0
+        let blackieAnimationCount = 0
+        let downieAnimationCount = 0
+        let bayBladeAnimationCount = 0
+        
+        function biggieCount(){
+            
+            biggieAnimationCount += 1;
+            const biggieCount = document.getElementById('biggieCount')
+            
+            // biggie.style.animationPlayState
+            
+            biggieCount.textContent = biggieAnimationCount        
+            
+        }
+        function blackieCount(){
+            
+            blackieAnimationCount += 1;
+            const blackieCount = document.getElementById('blackieCount')
+            
+            blackieCount.textContent = blackieAnimationCount        
+            
+        }
+        function downieCount(){
+            
+            downieAnimationCount += 1;
+            const downieCount = document.getElementById('downieCount')
+            
+            downieCount.textContent = downieAnimationCount        
+            
+        }
+        function bayBladeCount(){
+            
+            bayBladeAnimationCount += 1;
+            const bayBladeCount = document.getElementById('bayBladeCount')
+            
+            bayBladeCount.textContent = bayBladeAnimationCount        
+            
+        }
+        biggie.addEventListener("mouseenter", ()=> {
+            biggie.classList.add("goBig");
+            biggie.addEventListener("animationend", biggieCount)
+        })   
+        biggie.addEventListener("mouseleave", ()=> biggie.classList.remove("goBig"))
+
+        blackie.addEventListener("mouseenter", ()=> {
+            blackie.classList.add("goBlack")
+            blackie.addEventListener("animationend", blackieCount)
+        })
+        blackie.addEventListener("mouseleave", ()=> blackie.classList.remove("goBlack"))
+
+        downie.addEventListener("mousemove", ()=> {
+            downie.classList.add("goDown")
+            downie.addEventListener("animationend", downieCount)
+        })
+        downie.addEventListener("mouseleave", ()=> downie.classList.remove("goDown"))
+
+        bayBlade.addEventListener("mouseenter", ()=> {
+            bayBlade.classList.add("goSpin")
+            bayBlade.addEventListener("animationend", bayBladeCount)
+        })
+        bayBlade.addEventListener("mouseleave", ()=> bayBlade.classList.remove("goSpin"))
+    </script>    
+</body>
+</html>
