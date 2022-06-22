@@ -5,16 +5,15 @@ const taskListMain = document.getElementById("taskListMain")
 
 
 function newTask(){
-    const summary = document.getElementById('summary')
+    
     taskContainer()
     
     inputFrame.value = ""
     
-    if( summary === false){
+    if( document.getElementById('summary') === null){
         summary()
-    }else{
-        return
     }
+    
       
 }
 function taskContainer(){
@@ -32,13 +31,30 @@ function taskContainer(){
     newTask.appendChild(taskContent);
     taskListMain.appendChild(newTask);
 
+    checker.addEventListener("change", checked)
+
 
 }
 function summary(){
-    let summary = document.createElement('div')
+    let summary = document.createElement('section')
 
     summary.textContent = "tescik!"
+    summary.classList = "container summary"
     summary.id = 'summary'
     document.body.appendChild(summary);
+}
+
+function checked(){
+    let checker = document.querySelector("input")
+    let task = document.querySelector("form")
+
+    if(checker.checked){
+        task.classList.add("taskDone")
+    }else{
+        task.classList.remove("taskDone")
+    }
+
+    // tutaj 
+
 }
 inputFrame.addEventListener("change", newTask)
