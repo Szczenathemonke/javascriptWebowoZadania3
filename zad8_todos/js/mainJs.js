@@ -20,18 +20,24 @@ function taskContainer(){
     
     let newTask = document.createElement("form");
     let checker = document.createElement('input');
-    let taskContent = document.createElement('label');
+    let taskContent = document.createElement('label');    
+    let delBtn = document.createElement('button');
 
-    newTask.classList = "container";    
-    taskContent.classList = "dropDown inputFrame"
+        
+    
+    delBtn.classList = "deleteBtn";
     checker.type = "checkbox";
     taskContent.textContent = inputFrame.value;
     newTask.appendChild(checker);
     newTask.appendChild(taskContent);
+    newTask.appendChild(delBtn);
     taskListMain.appendChild(newTask);
 
     checker.addEventListener("change", checked)
+    newTask.addEventListener("mouseenter", showBtn)
+    newTask.addEventListener("mouseleave", hideBtn)
 
+    delBtn.addEventListener("click", deleteTask)
 
 }
 function summary(){
@@ -42,7 +48,21 @@ function summary(){
     summary.id = 'summary'
     document.body.appendChild(summary);
 }
+function showBtn(){
+    let btn = document.querySelector('.deleteBtn');    
+    btn.classList = "showBtn"
 
+
+}
+function hideBtn(){
+    let btn = document.querySelector('.showBtn');    
+    btn.classList = "deleteBtn"
+
+
+}
+function deleteTask(){
+
+}
 function checked(){
     let checker = document.getElementsByClassName("input")
     let task = document.getElementsByClassName("label")
