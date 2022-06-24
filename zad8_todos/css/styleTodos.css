@@ -126,7 +126,7 @@ input[type="checkbox"]{
     width: 1.5em;
     height: 1.5em;
     margin: 10px;  
-    border: 0.5px solid black ;
+    border: 0.5px solid var(--borders) ;
     border-radius: 50px; 
   }
   input[type="checkbox"]::before {
@@ -148,7 +148,8 @@ input[type="checkbox"]{
     transform: scale(1);
   }
 /*  klasy znikające do funkcji */
-.taskDone{
+.completed{
+    color: var(--borders);
     text-decoration: line-through;
-    text-decoration-color: grey;
+    text-decoration-color: var(--borders)
 }
