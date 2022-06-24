@@ -43,6 +43,32 @@ function taskContainer(){
     delBtn.addEventListener("click", deleteTask)   
 
 }
+function checkAllTasks(){
+
+    let taskCheckbox = document.querySelectorAll("input[type=checkbox")
+    
+
+    for (task of taskCheckbox){
+        task.checked = true
+    }       
+    checked()
+
+    listBtn.removeEventListener("click", checkAllTasks)
+    listBtn.addEventListener("click", uncheckAllTasks)
+}
+function uncheckAllTasks(){
+    let taskCheckbox = document.querySelectorAll("input[type=checkbox")
+    
+
+    for (task of taskCheckbox){
+        task.checked = false
+        
+    }       
+    checked()
+
+    listBtn.removeEventListener("click", uncheckAllTasks)
+    listBtn.addEventListener("click", checkAllTasks)
+}
 function summary(){
     let summary = document.createElement('section')
 
@@ -65,7 +91,6 @@ function deleteTask(){
     taskListMain.removeChild(taskToBeDeleted)  
 }
 function checked(){
-    let checker = document.querySelector("input")
     let label = document.querySelector("label")
 
     
@@ -79,4 +104,5 @@ function checked(){
 
 }
 inputFrame.addEventListener("change", newTask)
+listBtn.addEventListener("click", checkAllTasks)
 

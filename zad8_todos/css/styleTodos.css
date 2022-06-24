@@ -34,6 +34,8 @@ body{
     justify-content: center;
     align-items: center;
     border-top: 1px solid var(--borders);
+    box-shadow: 2px 2px 2px grey;
+    background-color: var(--secondary)
     
 }
 .summary{
@@ -52,8 +54,15 @@ body{
     background-color: var(--secondary)
 }
 .dropdownBtn{
+    
     width: 2rem;
-
+    height: 3rem;
+    padding: 1px 2px 1px 2px;
+    margin: 0px;
+    border: none;
+    box-shadow: 2px 2px 2px grey;    
+    clip-path: polygon(50% 50%, 100% 0, 100% 66%, 50% 100%, 0 66%, 0 0);;
+    background-color: var(--fourth) 
 }
 .inputFrame{
     width: 20rem;
