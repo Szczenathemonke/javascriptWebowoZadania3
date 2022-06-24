@@ -22,8 +22,7 @@ function taskContainer(){
     let checker = document.createElement('input');
     let taskContent = document.createElement('label');
 
-    newTask.classList = "container";
-    checker.classList = "dropDown dropdownBtn"
+    newTask.classList = "container";    
     taskContent.classList = "dropDown inputFrame"
     checker.type = "checkbox";
     taskContent.textContent = inputFrame.value;
@@ -45,13 +44,13 @@ function summary(){
 }
 
 function checked(){
-    let checker = document.querySelector("input")
-    let task = document.querySelector("form")
+    let checker = document.getElementsByClassName("input")
+    let task = document.getElementsByClassName("label")
 
     if(checker.checked){
         task.classList.add("taskDone")
     }else{
-        task.classList.remove("taskDone")
+        // task.classList.remove("taskDone")
     }
 
     // tutaj 
