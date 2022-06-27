@@ -30,6 +30,7 @@ function taskContainer(){
     let taskTag = `${taskCount}_${inputFrame.value}`
 
     newTask.name = taskTag
+    newTask.classList = "active"
     taskContent.classList = "active"    
     delBtn.classList = "deleteBtn";
     delBtn.id =`delete_${taskTag}`;
@@ -44,12 +45,15 @@ function taskContainer(){
 
     // checker.addEventListener("change", checked)
     checker.addEventListener("change", ()=>{
-        let labelTag = document.querySelector(`label[for="${taskTag}"`)
+        let labelTag = document.querySelector(`label[for="${taskTag}"`)        
 
         if (labelTag.classList.contains("completed")){
             labelTag.classList = "active"
+            newTask.classList = "active"
+            
         }else{
             labelTag.classList = "completed"
+            newTask.classList ="completed"
         }    
         
     })
@@ -100,21 +104,70 @@ function uncheckAllTasks(){
 function taskStatusChanger(taskId){
     let taskName = document.getElementById(`${taskId}`)
     let label = document.querySelector(`label[for="${taskId}"]`)
+    let taskForm = document.querySelector(`form[name="${taskId}"]`)
 
     if (taskName.checked == true){
         label.classList = "completed"
+        taskForm.classList ="completed"
     }else{
         label.classList = "active"
+        taskForm.classList ="active"
     }
+}
+function showAll(){
+    let tasks = document.querySelectorAll("form")
+
+    for (task of tasks){
+        task.style.display = "flex"
+    }
+    
+}
+function showActive(){
+    let tasks = document.querySelectorAll("form")
+
+    for (task of tasks){
+        if(task.classList.contains("active")){
+            task.style.display = "flex"
+        }else{
+            task.style.display = "none"
+        }
+    }    
+}
+function showCompleted(){
+    let tasks = document.querySelectorAll("form")
+
+    for (task of tasks){
+        if(task.classList.contains("completed")){
+            task.style.display = "flex"
+        }else{
+            task.style.display = "none"
+        }
+    }       
 }
 
 function summary(){
     let summary = document.createElement('section')
+    let allBtn = document.createElement("button")
+    let activeBtn = document.createElement("button")
+    let completedBtn = document.createElement("button")
 
-    summary.textContent = "tescik!"
+    
     summary.classList = "container summary"
     summary.id = 'summary'
+    allBtn.id = "allTaskList"
+    allBtn.textContent = "show all"
+    activeBtn.id = "activeTaskList"
+    activeBtn.textContent = "show Active"
+    completedBtn.id ="completedTaskList"
+    completedBtn.textContent = "show Completed"
+    summary.appendChild(allBtn);
+    summary.appendChild(activeBtn);
+    summary.appendChild(completedBtn);
     document.body.appendChild(summary);
+
+    allBtn.addEventListener("click", showAll)
+    activeBtn.addEventListener("click", showActive)
+    completedBtn.addEventListener("click", showCompleted)
 }
 // function showBtn(){
 //     let btn = document.querySelector('.deleteBtn');    

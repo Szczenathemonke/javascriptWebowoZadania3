@@ -54,15 +54,15 @@ body{
     background-color: var(--secondary)
 }
 .dropdownBtn{
-    
+    font-weight: bold;
+    font-size: larger;    
     width: 2rem;
-    height: 3rem;
+    height: 2rem;
     padding: 1px 2px 1px 2px;
     margin: 0px;
-    border: none;
-    box-shadow: 2px 2px 2px grey;    
-    clip-path: polygon(50% 50%, 100% 0, 100% 66%, 50% 100%, 0 66%, 0 0);;
-    background-color: var(--fourth) 
+    border: none;    
+    clip-path: polygon(80% 20%, 80% 60%, 50% 80%, 20% 60%, 20% 20%, 50% 50%);
+    background-color: var(--fourth);
 }
 .inputFrame{
     width: 20rem;
@@ -161,4 +161,10 @@ input[type="checkbox"]{
     color: var(--borders);
     text-decoration: line-through;
     text-decoration-color: var(--borders)
+}
+.hidden{
+    display: none;
+}
+.shown{
+    display: flex;
 }
