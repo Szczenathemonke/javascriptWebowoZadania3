@@ -25,31 +25,17 @@ function taskContainer(){
     let taskContent = document.createElement('label');    
     let delBtn = document.createElement('button');
 
-    let taskTag = inputFrame.value
-
         
     taskContent.classList = "active"
     delBtn.classList = "deleteBtn";
     checker.type = "checkbox";
-    checker.id = taskTag;
-    taskContent.htmlFor = taskTag;
-    taskContent.textContent = taskTag;
+    taskContent.textContent = inputFrame.value;
     newTask.appendChild(checker);
     newTask.appendChild(taskContent);
     newTask.appendChild(delBtn);
     taskListMain.appendChild(newTask);
 
-    // checker.addEventListener("change", checked)
-    checker.addEventListener("change", ()=>{
-        let labelTag = document.querySelector(`label[for="${taskTag}"`)
-
-        if (labelTag.classList.contains("completed")){
-            labelTag.classList = "active"
-        }else{
-            labelTag.classList = "completed"
-        }    
-        
-    })
+    checker.addEventListener("change", checked)
     newTask.addEventListener("mouseenter", showBtn)
     newTask.addEventListener("mouseleave", hideBtn)
     
@@ -59,27 +45,26 @@ function taskContainer(){
 }
 function checkAllTasks(){
 
-    let taskCheckbox = document.querySelectorAll("input[type=checkbox]")
+    let taskCheckbox = document.querySelectorAll("input[type=checkbox")
     
 
     for (task of taskCheckbox){
         task.checked = true
-        taskStatusChanger(task.id)
     }       
-    
+    checked()
 
     listBtn.removeEventListener("click", checkAllTasks)
     listBtn.addEventListener("click", uncheckAllTasks)
 }
 function uncheckAllTasks(){
-    let taskCheckbox = document.querySelectorAll("input[type=checkbox]")
+    let taskCheckbox = document.querySelectorAll("input[type=checkbox")
     
 
     for (task of taskCheckbox){
         task.checked = false
-        taskStatusChanger(task.id)
+        
     }       
-    
+    checked()
 
     listBtn.removeEventListener("click", uncheckAllTasks)
     listBtn.addEventListener("click", checkAllTasks)
@@ -105,18 +90,19 @@ function deleteTask(){
 
     taskListMain.removeChild(taskToBeDeleted)  
 }
+function checked(){
+    let label = document.querySelector("label")
 
-
-inputFrame.addEventListener("change", newTask)
-listBtn.addEventListener("click", checkAllTasks)
-
-function taskStatusChanger(task){
-    // let taskName = document.getElementByID(`"${task}"`)
-    let label = document.querySelector(`label[for=${task}]`)
-
+    
     if (label.classList.contains("completed")){
         label.classList = "active"
     }else{
         label.classList = "completed"
     }
+
+    // tutaj 
+
 }
+inputFrame.addEventListener("change", newTask)
+listBtn.addEventListener("click", checkAllTasks)
+
