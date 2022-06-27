@@ -4,11 +4,13 @@ const mainFrame = document.getElementById("mainFrame");
 const taskListMain = document.getElementById("taskListMain")
 let activeTasks = []
 let completeTasks = []
+let taskCount = 0
 
 
 function newTask(){
     
     taskContainer()
+    taskCount += 1
     
     inputFrame.value = ""
     
@@ -25,15 +27,16 @@ function taskContainer(){
     let taskContent = document.createElement('label');    
     let delBtn = document.createElement('button');
 
-    let taskTag = inputFrame.value
+    let taskTag = `${taskCount}_${inputFrame.value}`
 
-        
-    taskContent.classList = "active"
+    newTask.name = taskTag
+    taskContent.classList = "active"    
     delBtn.classList = "deleteBtn";
+    delBtn.id =`delete_${taskTag}`;
     checker.type = "checkbox";
     checker.id = taskTag;
     taskContent.htmlFor = taskTag;
-    taskContent.textContent = taskTag;
+    taskContent.textContent = inputFrame.value;
     newTask.appendChild(checker);
     newTask.appendChild(taskContent);
     newTask.appendChild(delBtn);
@@ -50,11 +53,21 @@ function taskContainer(){
         }    
         
     })
-    newTask.addEventListener("mouseenter", showBtn)
-    newTask.addEventListener("mouseleave", hideBtn)
-    
+    newTask.addEventListener("mouseenter", ()=>{
+    let btn = document.getElementById(`delete_${taskTag}`)    
+    btn.classList = "showBtn"
+    })   
+    newTask.addEventListener("mouseleave", ()=>{
+        let btn = document.getElementById(`delete_${taskTag}`)    
+        btn.classList = "deleteBtn"
+    })   
 
-    delBtn.addEventListener("click", deleteTask)   
+    delBtn.addEventListener("click", ()=>{
+        let taskToBeDeleted = document.querySelector(`form[name="${taskTag}"`)
+        
+        taskListMain.removeChild(taskToBeDeleted)
+    })
+       
 
 }
 function checkAllTasks(){
@@ -76,7 +89,7 @@ function uncheckAllTasks(){
     
 
     for (task of taskCheckbox){
-        task.checked = false
+        task.checked = false        
         taskStatusChanger(task.id)
     }       
     
@@ -84,6 +97,17 @@ function uncheckAllTasks(){
     listBtn.removeEventListener("click", uncheckAllTasks)
     listBtn.addEventListener("click", checkAllTasks)
 }
+function taskStatusChanger(taskId){
+    let taskName = document.getElementById(`${taskId}`)
+    let label = document.querySelector(`label[for="${taskId}"]`)
+
+    if (taskName.checked == true){
+        label.classList = "completed"
+    }else{
+        label.classList = "active"
+    }
+}
+
 function summary(){
     let summary = document.createElement('section')
 
@@ -92,31 +116,23 @@ function summary(){
     summary.id = 'summary'
     document.body.appendChild(summary);
 }
-function showBtn(){
-    let btn = document.querySelector('.deleteBtn');    
-    btn.classList = "showBtn"
-}
-function hideBtn(){
-    let btn = document.querySelector('.showBtn');    
-    btn.classList = "deleteBtn"
-}
-function deleteTask(){    
-    let taskToBeDeleted = document.querySelector("form")
+// function showBtn(){
+//     let btn = document.querySelector('.deleteBtn');    
+//     btn.classList = "showBtn"
+// }
+// function hideBtn(){
+//     let btn = document.querySelector('.showBtn');    
+//     btn.classList = "deleteBtn"
+//}
 
-    taskListMain.removeChild(taskToBeDeleted)  
-}
+// function deleteTask(){    
+//     let taskToBeDeleted = document.querySelector("form")
+
+//     taskListMain.removeChild(taskToBeDeleted)  
+// }
+
 
 
 inputFrame.addEventListener("change", newTask)
 listBtn.addEventListener("click", checkAllTasks)
 
-function taskStatusChanger(task){
-    // let taskName = document.getElementByID(`"${task}"`)
-    let label = document.querySelector(`label[for=${task}]`)
-
-    if (label.classList.contains("completed")){
-        label.classList = "active"
-    }else{
-        label.classList = "completed"
-    }
-}
