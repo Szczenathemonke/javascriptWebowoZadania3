@@ -12,13 +12,14 @@ function newTask(){
     taskContainer()
     taskCount += 1
     
+
     inputFrame.value = ""
     
     if( document.getElementById('summary') === null){
         summary()
     }
     
-      
+    activeTaskCounter()  
 }
 function taskContainer(){
     
@@ -54,7 +55,8 @@ function taskContainer(){
         }else{
             labelTag.classList = "completed"
             newTask.classList ="completed"
-        }    
+        }
+        activeTaskCounter()    
         
     })
     newTask.addEventListener("mouseenter", ()=>{
@@ -70,6 +72,7 @@ function taskContainer(){
         let taskToBeDeleted = document.querySelector(`form[name="${taskTag}"`)
         
         taskListMain.removeChild(taskToBeDeleted)
+        activeTaskCounter()
     })
        
 
@@ -83,7 +86,7 @@ function checkAllTasks(){
         task.checked = true
         taskStatusChanger(task.id)
     }       
-    
+    activeTaskCounter()
 
     listBtn.removeEventListener("click", checkAllTasks)
     listBtn.addEventListener("click", uncheckAllTasks)
@@ -96,7 +99,7 @@ function uncheckAllTasks(){
         task.checked = false        
         taskStatusChanger(task.id)
     }       
-    
+    activeTaskCounter()
 
     listBtn.removeEventListener("click", uncheckAllTasks)
     listBtn.addEventListener("click", checkAllTasks)
@@ -150,41 +153,73 @@ function summary(){
     let allBtn = document.createElement("button")
     let activeBtn = document.createElement("button")
     let completedBtn = document.createElement("button")
+    let activeTaskCounter = document.createElement("span")
+    let filter = document.createElement("div")
+    let clearBtn = document.createElement("button")
 
     
     summary.classList = "container summary"
     summary.id = 'summary'
+    
+    filter.classList = "filterBtnContainer"
+
+    allBtn.classList = "filterBtn"
     allBtn.id = "allTaskList"
-    allBtn.textContent = "show all"
+    allBtn.textContent = "show all"    
+    
+    activeBtn.classList = "filterBtn"
     activeBtn.id = "activeTaskList"
     activeBtn.textContent = "show Active"
+    
+    completedBtn.classList = "filterBtn"
     completedBtn.id ="completedTaskList"
     completedBtn.textContent = "show Completed"
-    summary.appendChild(allBtn);
-    summary.appendChild(activeBtn);
-    summary.appendChild(completedBtn);
+
+    activeTaskCounter.id = "activeTaskCounter"
+
+    clearBtn.textContent = "Clear Completed"
+    clearBtn.classList = "filterBtn"
+    clearBtn.id = "clearBtn"
+
+    filter.appendChild(allBtn);
+    filter.appendChild(activeBtn);
+    filter.appendChild(completedBtn);
+    
+    summary.appendChild(activeTaskCounter);
+    summary.appendChild(filter);
+    summary.appendChild(clearBtn);
+    
     document.body.appendChild(summary);
 
     allBtn.addEventListener("click", showAll)
     activeBtn.addEventListener("click", showActive)
     completedBtn.addEventListener("click", showCompleted)
+
+    clearBtn.addEventListener("click", clearCompletedTasks)
+
+    //tu zrobić counter
+
+    // tu zrobić delAllBtn, display when completed exist
 }
-// function showBtn(){
-//     let btn = document.querySelector('.deleteBtn');    
-//     btn.classList = "showBtn"
-// }
-// function hideBtn(){
-//     let btn = document.querySelector('.showBtn');    
-//     btn.classList = "deleteBtn"
-//}
+function activeTaskCounter(){
+    let counter = document.getElementById("activeTaskCounter")
+    let activeTasks = document.querySelectorAll("form.active")
 
-// function deleteTask(){    
-//     let taskToBeDeleted = document.querySelector("form")
-
-//     taskListMain.removeChild(taskToBeDeleted)  
-// }
+    if (activeTasks.length == 1){
+        counter.textContent = `${activeTasks.length} item left`
+    }else{
+        counter.textContent = `${activeTasks.length} items left`
+    }
 
 
+}
+function clearCompletedTasks(){    
+    let completedTasks = document.querySelectorAll("form.completed")
+
+    for (task of completedTasks){
+        taskListMain.removeChild(task)
+    }  
+}
 
 inputFrame.addEventListener("change", newTask)
 listBtn.addEventListener("click", checkAllTasks)

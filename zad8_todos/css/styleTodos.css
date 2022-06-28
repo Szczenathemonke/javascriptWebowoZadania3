@@ -6,6 +6,7 @@
     --fifth: rgb(82, 50, 73);
 
     --borders: #e6e6e6;
+    --borders-bold: #949494;
     --form: rgb(253, 253, 253);
 
     --secondary-backup: #dbebc0;
@@ -18,6 +19,7 @@
 
 body{
     font: 16px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 300;
     color: var(--fifth);
     margin: 0px;
     display: flex;
@@ -29,18 +31,25 @@ body{
     background: linear-gradient(180deg, rgba(203,212,194,1) 0%, rgba(219,235,192,1) 55%, rgba(195,178,153,1) 100%);
 }
 .container{
+    width: 100%;
+    max-width: 550px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    gap: 0.5rem;
     border-top: 1px solid var(--borders);
     box-shadow: 2px 2px 2px grey;
-    background-color: var(--secondary)
+    background-color: var(--secondary);
+    
     
 }
 .summary{
+    padding: 5px;
+    justify-content: space-between;
     height: 3rem;
-    width: 22rem;
+    width: 100%;
+    max-width: 540px ;
     background-color: var(--secondary);
     box-shadow: 0 1px 1px rgb(0 0 0 / 20%), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgb(0 0 0 / 20%), 0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgb(0 0 0 / 20%), 2px 2px 2px grey;;
     border-top: 1px solid var(--borders);
@@ -65,7 +74,8 @@ body{
     background-color: var(--fourth);
 }
 .inputFrame{
-    width: 20rem;
+    width: 100%;
+    max-width: 550px;
     box-sizing: border-box;    
 }
 .inputFrame:focus{
@@ -78,11 +88,13 @@ body{
     justify-content: center;
 }
 form{
+    
+    min-width: 550px;
     border-top: 1px solid var(--borders);
     display: flex;
     justify-content: flex-start;
     
-    width: 22rem;
+    
     height: 3rem;    
     background-color: rgb(253, 253, 253);
     gap: 0.5rem;
@@ -99,7 +111,7 @@ label{
     justify-content: space-between;
 
     height: 3rem;
-    width: 75%;
+    width: 85%;
     
     
     /* margin: 0px;
@@ -167,4 +179,28 @@ input[type="checkbox"]{
 }
 .shown{
     display: flex;
+}
+.filterBtnContainer{
+    display: flex;   
+
+    gap: 5px;
+
+}
+.filterBtn{    
+    padding: 2px;
+    border: solid 0.5px transparent;
+    background-color: var(--secondary);
+    
+}
+.filterBtn:hover{
+    padding: 2px;
+    
+    border: solid 0.5px var(--borders);
+    border-radius: 3px
+}
+.filterBtn:focus{
+    padding: 2px;
+    
+    border: solid 0.5px var(--fifth);
+    border-radius: 3px
 }
