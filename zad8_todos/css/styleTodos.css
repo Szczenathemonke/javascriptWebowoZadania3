@@ -214,7 +214,7 @@ input[type="checkbox"]{
     border: solid 0.5px var(--fifth);
     border-radius: 3px
 }
-@media (max-width:400px){
+@media (max-width:399px){
     .filterBtnContainer{
         align-self: stretch;
         order: 3;
