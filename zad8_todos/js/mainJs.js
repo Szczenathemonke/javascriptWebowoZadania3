@@ -32,21 +32,28 @@ function taskContainer(){
 
     newTask.name = taskTag
     newTask.classList = "active"
-    taskContent.classList = "active"    
+
+    taskContent.classList = "active" 
+
     delBtn.classList = "deleteBtn";
     delBtn.id =`delete_${taskTag}`;
+
     checker.type = "checkbox";
     checker.id = taskTag;
-    taskContent.htmlFor = taskTag;
+
+    
     taskContent.textContent = inputFrame.value;
+
     newTask.appendChild(checker);
     newTask.appendChild(taskContent);
     newTask.appendChild(delBtn);
     taskListMain.appendChild(newTask);
 
-    // checker.addEventListener("change", checked)
+    
     checker.addEventListener("change", ()=>{
-        let labelTag = document.querySelector(`label[for="${taskTag}"`)        
+        let taskForm = document.querySelector(`form[name="${taskTag}"]`)
+        let labelTag = taskForm.querySelector("label")
+                
 
         if (labelTag.classList.contains("completed")){
             labelTag.classList = "active"
@@ -106,8 +113,10 @@ function uncheckAllTasks(){
 }
 function taskStatusChanger(taskId){
     let taskName = document.getElementById(`${taskId}`)
-    let label = document.querySelector(`label[for="${taskId}"]`)
+    
     let taskForm = document.querySelector(`form[name="${taskId}"]`)
+    let label = taskForm.querySelector("label")
+
 
     if (taskName.checked == true){
         label.classList = "completed"
@@ -197,9 +206,7 @@ function summary(){
 
     clearBtn.addEventListener("click", clearCompletedTasks)
 
-    //tu zrobić counter
-
-    // tu zrobić delAllBtn, display when completed exist
+    
 }
 function activeTaskCounter(){
     let counter = document.getElementById("activeTaskCounter")
