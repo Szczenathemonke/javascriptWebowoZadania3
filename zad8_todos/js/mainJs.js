@@ -174,15 +174,15 @@ function summary(){
 
     allBtn.classList = "filterBtn"
     allBtn.id = "allTaskList"
-    allBtn.textContent = "show all"    
+    allBtn.textContent = "All"    
     
     activeBtn.classList = "filterBtn"
     activeBtn.id = "activeTaskList"
-    activeBtn.textContent = "show Active"
+    activeBtn.textContent = "Active"
     
     completedBtn.classList = "filterBtn"
     completedBtn.id ="completedTaskList"
-    completedBtn.textContent = "show Completed"
+    completedBtn.textContent = "Completed"
 
     activeTaskCounter.id = "activeTaskCounter"
 
