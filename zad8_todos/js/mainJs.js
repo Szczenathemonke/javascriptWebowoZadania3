@@ -1,6 +1,7 @@
 const inputFrame = document.getElementById("inputFrame");
 const listBtn = document.getElementById("listBtn");
 const mainFrame = document.getElementById("mainFrame");
+const mainForm = document.getElementById("mainForm");
 const taskListMain = document.getElementById("taskListMain")
 let activeTasks = []
 let completeTasks = []
@@ -12,14 +13,15 @@ function newTask(){
     taskContainer()
     taskCount += 1
     
-
     inputFrame.value = ""
     
     if( document.getElementById('summary') === null){
         summary()
     }
     
-    activeTaskCounter()  
+    activeTaskCounter()
+    
+    
 }
 function taskContainer(){
     
@@ -31,11 +33,11 @@ function taskContainer(){
     let taskTag = `${taskCount}_${inputFrame.value}`
 
     newTask.name = taskTag
-    newTask.classList = "active"
+    newTask.classList.add("active")
 
-    taskContent.classList = "active" 
+    taskContent.classList.add("active")
 
-    delBtn.classList = "deleteBtn";
+    delBtn.classList.add("deleteBtn")
     delBtn.id =`delete_${taskTag}`;
 
     checker.type = "checkbox";
@@ -56,25 +58,20 @@ function taskContainer(){
                 
 
         if (labelTag.classList.contains("completed")){
-            labelTag.classList = "active"
-            newTask.classList = "active"
+            labelTag.classList.remove("completed")
+            newTask.classList.remove("completed")
+            labelTag.classList.add("active")
+            newTask.classList.add("active")
             
         }else{
-            labelTag.classList = "completed"
-            newTask.classList ="completed"
+            labelTag.classList.remove("active")
+            newTask.classList.remove("active")
+            labelTag.classList.add("completed")
+            newTask.classList.add("completed")
         }
         activeTaskCounter()    
         
     })
-    newTask.addEventListener("mouseenter", ()=>{
-    let btn = document.getElementById(`delete_${taskTag}`)    
-    btn.classList = "showBtn"
-    })   
-    newTask.addEventListener("mouseleave", ()=>{
-        let btn = document.getElementById(`delete_${taskTag}`)    
-        btn.classList = "deleteBtn"
-    })   
-
     delBtn.addEventListener("click", ()=>{
         let taskToBeDeleted = document.querySelector(`form[name="${taskTag}"`)
         
@@ -118,11 +115,13 @@ function taskStatusChanger(taskId){
     let label = taskForm.querySelector("label")
 
 
-    if (taskName.checked == true){
-        label.classList = "completed"
+    if (taskName.checked){
+        label.classList.add("completed")
+        label.classList.remove("active")
         taskForm.classList ="completed"
     }else{
-        label.classList = "active"
+        label.classList.remove("completed")
+        label.classList.add("active")
         taskForm.classList ="active"
     }
 }
@@ -167,27 +166,28 @@ function summary(){
     let clearBtn = document.createElement("button")
 
     
-    summary.classList = "container summary"
+    summary.classList.add("summary")
+    summary.classList.add("container")
     summary.id = 'summary'
     
-    filter.classList = "filterBtnContainer"
+    filter.classList.add("filterBtnContainer")
 
-    allBtn.classList = "filterBtn"
+    allBtn.classList.add("filterBtn")
     allBtn.id = "allTaskList"
     allBtn.textContent = "All"    
     
-    activeBtn.classList = "filterBtn"
+    activeBtn.classList.add("filterBtn")
     activeBtn.id = "activeTaskList"
     activeBtn.textContent = "Active"
     
-    completedBtn.classList = "filterBtn"
+    completedBtn.classList.add("filterBtn")
     completedBtn.id ="completedTaskList"
     completedBtn.textContent = "Completed"
 
     activeTaskCounter.id = "activeTaskCounter"
 
     clearBtn.textContent = "Clear Completed"
-    clearBtn.classList = "filterBtn"
+    clearBtn.classList.add("filterBtn")
     clearBtn.id = "clearBtn"
 
     filter.appendChild(allBtn);
@@ -228,6 +228,6 @@ function clearCompletedTasks(){
     }  
 }
 
-inputFrame.addEventListener("change", newTask)
+mainForm.addEventListener("submit", newTask)
 listBtn.addEventListener("click", checkAllTasks)
 
